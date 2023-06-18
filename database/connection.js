@@ -1,14 +1,14 @@
 import mongoose from 'mongoose'
+import dotenv from 'dotenv';
+dotenv.config();
 
 async function connect() {
-
     mongoose.set('strictQuery', true);
-    const db = await mongoose.connect('mongodb://localhost:27017/Neokred-app', {
+    const db = await mongoose.connect(process.env.databaseConection, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
     console.log("Database Connected");
-
     return db;
 }
 
